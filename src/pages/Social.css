@@ -1,0 +1,31 @@
+.facebook{
+    width: 25px;
+    height: 25px;
+}
+
+.twitter{
+    width: 25px;
+    height: 25px;
+}
+
+.instagram{
+    width: 25px;
+    height: 25px;
+    border-radius: 360rem;
+}
+
+.youtube{
+    width: 25px;
+    height: 25px;
+    border-radius: 360rem;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.social-link{
+    margin-top: 5px;
+}
