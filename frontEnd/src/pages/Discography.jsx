@@ -3,7 +3,27 @@ import logo from "../assets/Got7_2022_logo.png";
 import React, { useState } from "react";
 import MenuIcon from "./MenuIcon";
 
-function Discography(params) {
+const albumsData = [
+  {
+    id: 1,
+    imageSrc:
+      "https://blogger.googleusercontent.com/img/a/AVvXsEh9oMSuhEV74m2MwTvFV7z_EJ8fjZQLgAIlSdEjX4meg8U6aVCv7SvDihAjja7PEOFDK4DEG23GtH1V437Q2zISv5X9oYt8PrUdw1B5uAIsuczI4ZgM8j24vPNAW-lPg4G96v9SoN4UkHL0YdBl1joNRVt1EqDuXCEsShTPirVJYOioqUeihUXXhZOG",
+    albumName: "GOT7 IS OUR NAME",
+  },
+  {
+    id: 2,
+    imageSrc: "https://inwfile.com/s-l/3azqfp.jpg",
+    albumName: "TURBURLENCE",
+  },
+  {
+    id: 3,
+    imageSrc:
+      "https://4.bp.blogspot.com/-KZm3AJVUvKM/Ut3hlgp7V9I/AAAAAAAABBY/ewfAHWZRkfA/s1600/got7.jpg",
+    albumName: "GOT IT?",
+  },
+];
+
+function Discography() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
@@ -29,16 +49,57 @@ function Discography(params) {
           object-fit: cover;
         }
 
-        @media (max-width: 576px) {
+        .vdo-cover{
+            width: 187px;
+            height: 105px;
+        }
+
+        @media (max-width: 600px) {
             .head-logo{
                 display: flex;
-                flex-direction: column;
             }
 
             .app{
                 display: flex;
                 flex-direction: column;
+                margin-top: 50px
             }
+
+            .logo-con{
+              margin-top: 130px;
+            }
+
+            .song {
+              display: flex;
+            }
+
+            .vdo-cover{
+              width: 190px;
+              height: 140px;
+          }
+
+          .song-info{
+            font-size: 10px;
+          }
+
+          .song-info h1{
+            padding: 0px;
+            font-size: 14px;
+          }
+
+          .title {
+            margin-top: -10px;
+          }
+
+          .views{
+            margin: 0px
+          }
+
+          .vdo-player iframe{
+            width: 200px;
+            height: 108px;
+          }
+
         `}
       </style>
 
@@ -54,9 +115,15 @@ function Discography(params) {
       >
         <Social_inline />
         <div className="logo-con">
-          <img src={logo} style={{ height: "60px", marginLeft:"-110px", marginTop:"50px" }}></img>
+          <img
+            src={logo}
+            style={{ height: "60px", marginLeft: "-110px", marginTop: "50px" }}
+          ></img>
         </div>
-        <div className="menu-icon-container" style={{margin:"30px 20px 0px 0px"}}>
+        <div
+          className="menu-icon-container"
+          style={{ margin: "30px 20px 0px 0px" }}
+        >
           <MenuIcon />
         </div>
       </div>
@@ -73,8 +140,8 @@ function Discography(params) {
             DISCOGRAPHY
           </h1>
         </div>
-        <div
-          className="disc-body"
+        
+        <div className="disc-body"
           style={{
             backgroundColor: "white",
             width: "80%",
@@ -88,54 +155,36 @@ function Discography(params) {
             padding: "20px",
           }}
         >
-          <div className="disc-show-pop" style={disc_pop}>
-            <div className="album-container">
-              <div className="album-01" style={album_part}>
-                <div className="album-cover">
-                  <img
-                    src="https://blogger.googleusercontent.com/img/a/AVvXsEh9oMSuhEV74m2MwTvFV7z_EJ8fjZQLgAIlSdEjX4meg8U6aVCv7SvDihAjja7PEOFDK4DEG23GtH1V437Q2zISv5X9oYt8PrUdw1B5uAIsuczI4ZgM8j24vPNAW-lPg4G96v9SoN4UkHL0YdBl1joNRVt1EqDuXCEsShTPirVJYOioqUeihUXXhZOG"
-                    alt="got7isourname"
-                    style={album_cover}
-                  ></img>
-                </div>
-                <div className="name-album">
-                  <h4>GOT7 IS OUR NAME</h4>
-                </div>
-              </div>
-            </div>
-            <div className="album-container">
-              <div className="album-02" style={album_part}>
-                <div className="album-cover">
-                  <img
-                    src="https://inwfile.com/s-l/3azqfp.jpg"
-                    alt="got7tuburrence"
-                    style={album_cover}
-                  ></img>
-                </div>
-                <div className="name-album">
-                  <h4>TURBURLENCE</h4>
+          <div
+            className="disc-show-pop"
+            style={{
+              width: "100%",
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-around",
+            }}
+          >
+            {albumsData.map((album) => (
+              <div className="album-container" key={album.id}>
+                <div className={album.id} style={album_part}>
+                  <div className="album-cover">
+                    <img
+                      src={album.imageSrc}
+                      alt={album.albumName}
+                      style={album_cover}
+                    />
+                  </div>
+                  <div className="name-album">
+                    <h4>{album.albumName}</h4>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="album-container">
-              <div className="album-03" style={album_part}>
-                <div className="album-cover">
-                  <img
-                    src="https://4.bp.blogspot.com/-KZm3AJVUvKM/Ut3hlgp7V9I/AAAAAAAABBY/ewfAHWZRkfA/s1600/got7.jpg"
-                    alt="got it?"
-                    style={album_cover}
-                  ></img>
-                </div>
-                <div className="name-album">
-                  <h4>GOT IT?</h4>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className="song-suggestion">
           <div
-            className="song_01"
+            className="song"
             onMouseEnter={handleHover}
             onMouseLeave={handleHoverExit}
           >
@@ -157,7 +206,7 @@ function Discography(params) {
                     height="215px"
                     src="https://www.youtube.com/embed/IZ0oQ6nzKxo?controls=0"
                     title="YouTube video player"
-                    frameborder="0"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen
                     style={{ marginLeft: "20px" }}
@@ -198,11 +247,11 @@ function Discography(params) {
                 </div>
               </div>
             ) : (
-              <div className="song_01" style={song_con}>
+              <div className="song" style={song_con}>
                 <div className="vdo-cover">
                   <img
+                    className="vdo-cover"
                     src="https://f.ptcdn.info/329/077/000/rc6sd8104gPH3u9k2rgd-o.jpg"
-                    style={vdo_cover}
                   ></img>
                 </div>
                 <div
@@ -235,14 +284,14 @@ function Discography(params) {
               </div>
             )}
           </div>
-          <div className="song_02" style={song_con}>
+          <div className="song" style={song_con}>
             <div className="vdo">
               <iframe
                 width="187"
                 height="105"
                 src="https://www.youtube.com/embed/IZ1t7CwfvEc?controls=0"
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
               ></iframe>
             </div>
             <div
@@ -309,9 +358,4 @@ const song_con = {
   marginTop: "20px",
   padding: "20px",
   display: "flex",
-};
-
-const vdo_cover = {
-  width: "187px",
-  height: "105px",
 };

@@ -18,6 +18,54 @@ function Member01(params) {
           html, body {
             background-color: #F3F6F4;
           }
+
+          @media (max-width: 600px) {
+            .member_part{
+              display: flex;
+              flex-direction: column;
+            }
+
+            .mem_links{
+              align-items: center;
+              margin-bottom: 0px !important;
+              display: flex !important;
+              flex-wrap: wrap;
+              flex-direction: row !important;
+              justify-content: center;
+            }
+
+            .nav {
+              display: flex;
+              padding: 5px;
+            }
+
+            .member_part{
+              margin-top: 20px !important;
+            }
+
+            .left_side {
+              margin-right: 0px !important;
+              display: flex !important;
+              flex-direction: column !important;
+            }
+
+            .mem_info {
+              text-align: center !important;
+              margin: 10px 0px 10px 0px;
+            }
+
+            .mem_pic {
+              margin-top: 20px;
+            }
+
+            .social-link{
+              display: flex !important;
+              justify-content: flex-end !important;
+              margin-top: 240px;
+              margin-left: -20px;
+              
+            }
+          }
         `}
       </style>
       <div className="container">

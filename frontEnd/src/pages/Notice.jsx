@@ -10,6 +10,34 @@ function Notice() {
           html, body {
             background-color: #F3F6F4;
           }
+
+          @media (max-width: 600px) {
+            .head-logo{
+                display: flex;
+            }
+
+            .app{
+                display: flex;
+                flex-direction: column;
+            }
+
+            .notice-heading{
+              margin-top: 110px
+            }
+            .logo-con{
+              margin-top: 130px;
+            }
+
+            .notice-contianer{
+              margin-top: -50px;
+              width: 330px;
+              margin: 0 auto;
+            }
+
+            .notice hr{
+              width: 290px;
+            }
+          }
         `}
       </style>
       <div className="app">
@@ -105,7 +133,7 @@ const styleHead = {
 };
 
 const hr = {
-  width: "640px",
+  // width: "640px",
 };
 
 const h3 = {

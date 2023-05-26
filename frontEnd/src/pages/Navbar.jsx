@@ -1,59 +1,86 @@
 import React from "react";
-// import "./Navbar.css";
+import MenuIcon from "./MenuIcon";
 import logo from "../assets/got7logo.png";
 import { Routes, Route, NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
     <>
-      <style>
-        {`
-@font-face {
-  font-family: 'My Custom Font';
-  src: url('../font/JosefinSans-VariableFont_wght.ttf') format('woff2')
-}
+      <style> {`
+      @font-face {
+        font-family: 'My Custom Font';
+        src: url('../font/JosefinSans-VariableFont_wght.ttf') format('woff2')
+      }
+      
+      .navbar {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+      
+      .navbar-logo {
+        margin: 10px;
+      }
+      
+      .logo7{
+        width:100%;
+        height: 60px;
+      
+      }
+      
+      .navbar-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style-type: none;
+        padding: 0;
+        margin-left: 8px;
+      }
+      
+      .navbar-item {
+        margin: 0 10px;
+        font-size: 16px;
+        font-family: "Josefin Sans", sans-serif;
+      }
+      
+      .navbar-link {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      
+      .navbar-link:hover {
+        color: #0ecd4d;
+      }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
+      .icon-menu{
+        display: none;
+      }
 
-.navbar-logo {
-  margin: 10px;
-}
+      @media screen and (max-width: 800px){
+        .navbar-menu{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+      
+        .navbar {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          justify-content: space-between;
+        }
 
-.logo7{
-  width:100%;
-  height: 60px;
+        .mem-nav{
+          display: none;
+        }
 
-}
+        .icon-menu{
+          display: block !important;
+        }
 
-.navbar-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  list-style-type: none;
-  padding: 0;
-  margin-left: 8px;
-}
-
-.navbar-item {
-  margin: 0 10px;
-  font-size: 16px;
-  font-family: "Josefin Sans", sans-serif;
-}
-
-.navbar-link {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.navbar-link:hover {
-  color: #0ecd4d;
-}
+      }
     
-    `}
+      `}
       </style>
       <nav className="navbar">
         <div className="navbar-logo">
@@ -61,7 +88,7 @@ function Navbar() {
             <img className="logo7" src={logo} alt="Logo" />
           </div>
         </div>
-        <div style={{ justifyItems: "start" }}>
+        <div className="mem-nav" style={{ justifyItems: "start" }}>
           <ul className="navbar-menu">
             <li className="navbar-item">
               <a href="/" className="navbar-link">
@@ -94,6 +121,9 @@ function Navbar() {
               </a>
             </li>
           </ul>
+        </div>
+        <div className="icon-menu">
+          <MenuIcon />
         </div>
       </nav>
     </>

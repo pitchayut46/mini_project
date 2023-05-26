@@ -1,6 +1,7 @@
 // import "./Home.css";
 import Social from "./Social";
 import Navbar from "./Navbar";
+import MenuIcon from "./MenuIcon";
 
 function Home() {
   return (
@@ -13,29 +14,30 @@ function Home() {
             background-size: 100vw 100vh;
             background-repeat: no-repeat;
             height: fit-content;
+          }
           
             .text{
               margin-top: 400px;
-              /* margin-bottom: 190px; */
               color: white;
-          }
-          .text-kr {
+            }
+
+            .text-kr {
               font-size: 18px;
               margin-bottom: -40px;
               text-align: center;
-          }
+            }
           
-          .text-en {
+            .text-en {
               font-size: 28px;
               text-align: center;
-          }
+            }
           
-          .home-button {
+            .home-button {
               margin-top: -20px;
               text-align: center;
-          }
+            }
           
-          .button {
+            .button {
               background-color: transparent;
               border-radius: 25px;
               border: 2px solid white;
@@ -45,14 +47,47 @@ function Home() {
               font-weight: semiBold;
               cursor: pointer;
             }
-          .navigate{
-            text-decoration: none;
-            color: white;
-          }        
+
+            .navigation{
+              text-decoration: none;
+              color: white;
+            }
+
+            .menu-icon {
+              display: none;
+            }
+
+          @media screen and (max-width: 600px) {
+            .menu-full {
+              display: none;
+            }
+
+            html, body {
+              background-size: 200vw 100vh;
+              background-position: top;
+            }
+
+            .menu-icon{
+              display: flex;
+              justify-content: flex-end;
+              padding: 30px 10px 0px 0px;
+            }
+
+            .navigate {
+              color: green;
+              text-decoration: none;
+            }
+          }
+
         `}
       </style>
       <div className="all">
-        <Navbar />
+        <div className="menu-full">
+          <Navbar />
+        </div>
+        <div className="menu-icon">
+          <MenuIcon />
+        </div>
         <div className="text">
           <div className="text-kr">
             <h1>갓세븐</h1>
@@ -63,17 +98,16 @@ function Home() {
         </div>
         <div className="home-button">
           <button className="button">
-          <a href="/Login" className="navigate">HOME FEED</a></button>
+            <a href="/Login" className="navigation">
+              HOME FEED
+            </a>
+          </button>
         </div>
-        <div className="link" style={{marginTop:"-100px"}}>
-        <Social />
+        <div className="link" style={{ marginTop: "-100px" }}>
+          <Social />
         </div>
       </div>
     </>
   );
 }
 export default Home;
-
-
-
-
