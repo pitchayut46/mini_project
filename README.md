@@ -9,10 +9,10 @@ This web application is a fan club platform for Got7, South Korean boy band. It 
 | Feature                                           | Description                                                                                                      |
 |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | Information about the group members               | Provides biographies, photos, and social media links for each member of Got7.                                    |
-| User interaction(INCOMPLETE)                                  | Enables users to interact with each other through chat rooms, forums, or social media integration.                 |
+| User interaction (INCOMPLETE)                                  | Enables users to interact with each other through chat rooms, forums, or social media integration.                 |
 | Got7 discography                                  | Displays a comprehensive list of Got7's albums, singles, and music videos.                                        |
 | Music playback                                    | Allows users to listen to Got7's music through embedded audio players or links to popular music streaming services. |
-| Tour dates and ticket sales information(INCOMPLETE)            | Provides information about upcoming tour dates and links to purchase tickets.                                     |
+| Tour dates and ticket sales information (INCOMPLETE)            | Provides information about upcoming tour dates and links to purchase tickets.                                     |
 
 ## To run the frontend and backend
 
