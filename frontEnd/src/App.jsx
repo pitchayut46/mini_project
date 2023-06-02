@@ -15,12 +15,40 @@ import {
   Route,
   Switch,
   NavLink,
+  useNavigate,
+  Navigate,
 } from "react-router-dom";
 import Discography from "./pages/Discography";
 import Heaven from "./pages/Heaven";
+import { useEffect, useState } from "react";
+import Axios from "./AxiosInstance";
 
 function App() {
-  return (      
+  const [isLogin, setIsLogin] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    Axios.get("/check")
+      .then((res) => {
+        setIsLogin(res.data.success);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  if (isLoading) {
+    return <></>;
+  }
+  return (
+    <>
+      {isLogin ? (
         <Routes>
           <Route exaxt path="/" element={<Home />} />
           <Route path="/Login" element={<Login />} />
@@ -37,8 +65,16 @@ function App() {
           <Route path="/Member05" element={<Member05 />} />
           <Route path="/Member06" element={<Member06 />} />
           <Route path="/Member07" element={<Member07 />} />
-
         </Routes>
+      ) : (
+        <Routes>
+          <Route exaxt path="/" element={<Home />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/*" element={<Navigate to={"/Login"} replace />} />
+        </Routes>
+      )}
+    </>
   );
 }
 

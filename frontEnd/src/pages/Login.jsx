@@ -3,17 +3,40 @@ import { useState } from 'react';
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
+import { AxiosError } from "axios";
+import Axios from "../AxiosInstance";
 
 function Login() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Form submitted");
-    console.log("Username:", username);
-    console.log("Password:", password);
+    try {
+      const response = await Axios.post("/login", {
+        username,
+        password,
+      });
+
+      if (response.data.success) {
+        console.log(response.data.message);
+        navigate("/");
+      } else {
+        setUsername("");
+        setPassword("");
+        console.error(response.data.error);
+      }
+    } catch (e) {
+      setPassword("");
+      if (e instanceof AxiosError) {
+        if (e.response) {
+          console.error(e.response.data.error);
+        }
+      }
+    }
   };
 
   function handleUsernameChange(e) {
@@ -241,7 +264,7 @@ function Login() {
                   </div>
                   <div className="input-fill">
                     <input
-                      type="text"
+                      type="password"
                       className="form-control"
                       id="Password"
                       name="password"

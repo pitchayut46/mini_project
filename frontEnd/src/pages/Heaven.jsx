@@ -27,7 +27,7 @@ function Heaven(params) {
         }}
       >
         <Navbar />
-        <h1 className="h1">ERROR 404 THIS PAGE IS UNDER CONSTRUCTION</h1>
+        <h1 className="h1">THIS PAGE IS UNDER CONSTRUCTION</h1>
         <br />
         <h4>Sorry for the inconvenience</h4>
       </div>

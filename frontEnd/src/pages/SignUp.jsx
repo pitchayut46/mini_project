@@ -3,20 +3,50 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Navbar from "../pages/Navbar";
+import { Password } from "@mui/icons-material";
+import Axios from "../AxiosInstance";
+import { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Form submitted");
-    console.log("Email:", email);
-    console.log("Username:", username);
-    console.log("Password:", password);
-    console.log("Confirm Password:", ConfirmPassword);
+    if (password != confirmPassword) {
+      setPassword("");
+      setConfirmPassword("");
+      return;
+    }
+    try {
+      const response = await Axios.post("/register", {
+        username,
+        password,
+        email,
+      });
+
+      if (response.data.success) {
+        console.log(response.data.message);
+        navigate("/login");
+      } else {
+        setUsername("");
+        setPassword("");
+        setConfirmPassword("");
+        console.error(response.data.error);
+      }
+    } catch (e) {
+      setPassword("");
+      setConfirmPassword("");
+      if (e instanceof AxiosError) {
+        if (e.response) {
+          console.error(e.response.data.error);
+        }
+      }
+    }
   };
 
   function handleEmailChange(e) {
@@ -286,7 +316,7 @@ function SignUp() {
                 </div>
                 <div className="input-fill">
                   <input
-                    type="text"
+                    type="password"
                     className="form-control"
                     id="Password"
                     name="password"
@@ -300,16 +330,16 @@ function SignUp() {
               </div>
               <div className="form-group">
                 <div className="label">
-                  <label htmlFor="ConfirmPassword">Confirm Password</label>
+                  <label htmlFor="confirmPassword">Confirm Password</label>
                 </div>
                 <div className="input-fill">
                   <input
-                    type="text"
+                    type="password"
                     className="form-control"
                     id="ConfirmPassword"
                     name="ConfirmPassword"
                     placeholder=""
-                    value={ConfirmPassword}
+                    value={confirmPassword}
                     onChange={handleConfirmPasswordChange}
                     required
                     autoComplete="password"
