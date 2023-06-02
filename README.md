@@ -14,6 +14,13 @@ This web application is a fan club platform for Got7, South Korean boy band. It 
 | Music playback                                    | Allows users to listen to Got7's music through embedded audio players or links to popular music streaming services. |
 | Tour dates and ticket sales information           | Provides information about upcoming tour dates and links to purchase tickets.                                     |
 
+## To run the frontend and backend
+
+### FrontEnd / BackEnd
+
+```
+npm start
+```
 
 ## API Name: Verify User Token
 
